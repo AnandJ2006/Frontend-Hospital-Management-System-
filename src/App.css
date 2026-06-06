@@ -795,3 +795,77 @@
       grid-template-columns: 1fr;
     }
   }
+
+
+
+
+  /* FORM CONTAINER */
+.form-section {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  width: 100%;
+}
+
+/* FORM */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* INPUT ROW (for name + email + subject) */
+.contact-form .row {
+  display: flex;
+  gap: 10px;
+}
+
+/* INPUT FIELDS */
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+/* INPUT FOCUS EFFECT */
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+/* TEXTAREA */
+.contact-form textarea {
+  min-height: 120px;
+  resize: none;
+}
+
+/* BUTTON */
+.submit-btn {
+  background: #16a085;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* BUTTON HOVER */
+.submit-btn:hover {
+  background: #138d75;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .contact-form .row {
+    flex-direction: column;
+  }
+}

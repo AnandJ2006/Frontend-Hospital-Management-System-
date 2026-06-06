@@ -94,48 +94,50 @@ const Contact = ({ setCurrentPage }) => {
           <div className="form-section">
             <h2>Send Message</h2>
 
-            <form className="contact-form" onSubmit={handleFormSubmit}>
-              
-              <input
-                type="text"
-                name="name"
-                placeholder="Full Name"
-                value={formData.name}
-                onChange={handleInputChange}
-                required
-              />
+<form className="contact-form" onSubmit={handleFormSubmit}>
 
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                value={formData.email}
-                onChange={handleInputChange}
-                required
-              />
+  <div className="row">
+    <input
+      type="text"
+      name="name"
+      placeholder="Full Name"
+      value={formData.name}
+      onChange={handleInputChange}
+      required
+    />
 
-              <input
-                type="text"
-                name="subject"
-                placeholder="Subject"
-                value={formData.subject}
-                onChange={handleInputChange}
-                required
-              />
+    <input
+      type="email"
+      name="email"
+      placeholder="Email"
+      value={formData.email}
+      onChange={handleInputChange}
+      required
+    />
+  </div>
 
-              <textarea
-                name="message"
-                placeholder="Message"
-                value={formData.message}
-                onChange={handleInputChange}
-                required
-              ></textarea>
+  <input
+    type="text"
+    name="subject"
+    placeholder="Subject"
+    value={formData.subject}
+    onChange={handleInputChange}
+    required
+  />
 
-              <button type="submit" className="submit-btn">
-                Send Message
-              </button>
+  <textarea
+    name="message"
+    placeholder="Message"
+    value={formData.message}
+    onChange={handleInputChange}
+    required
+  ></textarea>
 
-            </form>
+  <button type="submit" className="submit-btn">
+    Send Message
+  </button>
+
+</form>
           </div>
         </div>
 
