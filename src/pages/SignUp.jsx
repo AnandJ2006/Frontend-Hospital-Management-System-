@@ -1,60 +1,108 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from "axios";
 import '../App.css';
 
-export default function SignUp() {
+export default function SignUp({ setCurrentPage }) {
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSignup = async (e) => {
+    e.preventDefault();
+
+    if (!name || !email || !username || !password) {
+      alert("Please fill all fields");
+      return;
+    }
+
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!re.test(email)) {
+      alert("Enter a valid email");
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        "https://hospital-management-system-t69x.onrender.com/api/user/signup",
+        {
+          fullname: name,
+          email,
+          username,
+          password
+        }
+      );
+
+      alert(response.data.message);
+
+      // Navigate using state instead of reload
+      setCurrentPage('login');
+
+    } catch (error) {
+      console.log(error);
+      alert("Registration failed");
+    }
+  };
+
   return (
     <div className="form-container">
       <h2>Sign Up</h2>
 
-      <form onSubmit={async (e) => {
-        e.preventDefault();
-        const name = document.getElementById("name").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const username = document.getElementById("username").value.trim();
-        const password = document.getElementById("password").value;
+      <form onSubmit={handleSignup}>
+        <input
+          type="text"
+          placeholder="Full Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+        <br /><br />
 
-        if (name === "" || email === "" || username === "" || password === "") {
-          alert("Please fill all fields");
-          return false;
-        }
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <br /><br />
 
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!re.test(email)) {
-          alert("Enter a valid email");
-          return false;
-        }
+        <input
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
+        <br /><br />
 
-        try {
-        const response = await axios.post(
-          "https://hospital-management-system-t69x.onrender.com/api/user/signup",
-          {
-            fullname: name,
-            email: email,
-            username: username,
-            password: password
-          }
-        );
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <br /><br />
 
-        alert(response.data.message);
-        window.location.href = "/login";
-      }
-      catch(error){
-        console.log(error);
-        alert("Registration failed");
-      }
-
-        alert("Registration Successful!");
-        window.location.href = "/login";
-      }}>
-        <input type="text" id="name" placeholder="Full Name" required /><br /><br />
-        <input type="email" id="email" placeholder="Email" required /><br /><br />
-        <input type="text" id="username" placeholder="Username" required /><br /><br />
-        <input type="password" id="password" placeholder="Password" required /><br /><br />
         <button type="submit">Register</button>
       </form>
 
-      <p>Already have an account? <a href="#">Login</a></p>
+      <p>
+        Already have an account?{' '}
+        <button
+          onClick={() => setCurrentPage('login')}
+          style={{
+            background: 'none',
+            border: 'none',
+            color: 'blue',
+            cursor: 'pointer'
+          }}
+        >
+          Login
+        </button>
+      </p>
     </div>
   );
 }
