@@ -70,14 +70,21 @@ const Login = ({ setCurrentPage }) => {
       </form>
 
       <p>
-        New User?{' '}
-        <a
-          onClick={() => setCurrentPage('signup')}
-          style={{ cursor: 'pointer' }}
-        >
-          Sign Up
-        </a>
-      </p>
+  New User?{' '}
+  <button
+    onClick={() => setCurrentPage('signup')}
+    style={{
+      background: 'none',
+      border: 'none',
+      color: 'blue',
+      textDecoration: 'underline',
+      cursor: 'pointer',
+      padding: 0
+    }}
+  >
+    Sign Up
+  </button>
+</p>
     </div>
   );
 };
