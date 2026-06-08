@@ -213,6 +213,153 @@
     font-size: 14px;
   }
 
+  /* DEPARTMENTS SECTION */
+  .departments {
+    padding: 60px 50px;
+    background: #ffffff;
+    text-align: center;
+  }
+
+  .departments h2 {
+    color: #2b2f6c;
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+
+  .section-desc {
+    color: #555;
+    font-size: 16px;
+    margin-bottom: 40px;
+  }
+
+  .dept-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .dept-card {
+    background: #f8fafc;
+    padding: 30px 20px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border: 1px solid #e2e8f0;
+  }
+
+  .dept-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border-color: #00c897;
+  }
+
+  .dept-icon {
+    font-size: 40px;
+    display: block;
+    margin-bottom: 15px;
+  }
+
+  .dept-card h3 {
+    color: #2b2f6c;
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+
+  .dept-card p {
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* TESTIMONIALS SECTION */
+  .testimonials {
+    padding: 60px 50px;
+    background: #f4f6fb;
+    text-align: center;
+  }
+
+  .testimonials h2 {
+    color: #2b2f6c;
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+
+  .testimonial-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .testimonial-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    position: relative;
+    text-align: left;
+  }
+
+  .quote {
+    font-style: italic;
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .testimonial-card h4 {
+    color: #007bff;
+    font-size: 16px;
+    margin: 0;
+  }
+
+  /* CTA SECTION */
+  .cta-section {
+    padding: 60px 50px;
+    background: linear-gradient(135deg, #007bff, #00c897);
+    color: white;
+    text-align: center;
+  }
+
+  .cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .cta-content h2 {
+    font-size: 36px;
+    margin-bottom: 15px;
+  }
+
+  .cta-content p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    opacity: 0.9;
+  }
+
+  .btn-emergency {
+    background: #ff4757;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+  }
+
+  .btn-emergency:hover {
+    background: #ff6b81;
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 71, 87, 0.6);
+  }
+
   /* LOGIN & SIGNUP FORM */
   .form-container {
     width: 300px;

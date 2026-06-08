@@ -171,6 +171,62 @@ const Home = ({ setCurrentPage }) => {
         </div>
       </section>
 
+      {/* DEPARTMENTS SECTION */}
+      <section className="departments">
+        <h2>Our Specialties</h2>
+        <p className="section-desc">Providing world-class care across multiple medical disciplines.</p>
+        <div className="dept-grid">
+          <div className="dept-card">
+            <span className="dept-icon">🫀</span>
+            <h3>Cardiology</h3>
+            <p>Expert heart care with advanced diagnostic and therapeutic services.</p>
+          </div>
+          <div className="dept-card">
+            <span className="dept-icon">🧠</span>
+            <h3>Neurology</h3>
+            <p>Comprehensive care for neurological disorders and brain health.</p>
+          </div>
+          <div className="dept-card">
+            <span className="dept-icon">🦴</span>
+            <h3>Orthopedics</h3>
+            <p>Specialized treatment for bone, joint, and muscle conditions.</p>
+          </div>
+          <div className="dept-card">
+            <span className="dept-icon">👶</span>
+            <h3>Pediatrics</h3>
+            <p>Dedicated healthcare services for children from birth to adolescence.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS SECTION */}
+      <section className="testimonials">
+        <h2>Patient Stories</h2>
+        <div className="testimonial-container">
+          <div className="testimonial-card">
+            <p className="quote">"The care I received was exceptional. The staff was attentive and the doctors were highly skilled."</p>
+            <h4>- Sarah Jenkins</h4>
+          </div>
+          <div className="testimonial-card">
+            <p className="quote">"Booking an appointment was seamless, and I didn't have to wait. Highly recommend this hospital."</p>
+            <h4>- Michael Chen</h4>
+          </div>
+          <div className="testimonial-card">
+            <p className="quote">"A truly modern facility with compassionate professionals. They made my recovery process so much easier."</p>
+            <h4>- Emily Rodriguez</h4>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA SECTION */}
+      <section className="cta-section">
+        <div className="cta-content">
+          <h2>Need Emergency Care?</h2>
+          <p>Our emergency department is open 24/7. Don't hesitate to reach out if you need immediate assistance.</p>
+          <button className="btn-emergency" onClick={() => window.location.href='tel:911'}>Call 911 / Emergency</button>
+        </div>
+      </section>
+
       {/* INFO SECTION */}
       <section className="info">
         <h2>Healthcare Software</h2>
