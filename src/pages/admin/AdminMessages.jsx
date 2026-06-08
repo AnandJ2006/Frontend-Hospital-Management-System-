@@ -7,7 +7,33 @@ const AdminMessages = ({ setCurrentPage }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const fetchMessages = async (token) => {
+      try {
+        const response = await axios.get(
+          'https://hospital-management-system-t69x.onrender.com/api/contact/all',
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        setMessages(response.data);
+      } catch (err) {
+        console.error('Error fetching messages:', err);
+
+        // If unauthorized → redirect to login
+        if (err.response && err.response.status === 401) {
+          localStorage.removeItem('adminToken');
+          setCurrentPage('admin-login');
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
     const token = localStorage.getItem('adminToken');
+
     if (!token) {
       setCurrentPage('admin-login');
       return;
@@ -16,39 +42,29 @@ const AdminMessages = ({ setCurrentPage }) => {
     fetchMessages(token);
   }, [setCurrentPage]);
 
-  const fetchMessages = async (token) => {
-    try {
-      const response = await axios.get('https://hospital-management-system-t69x.onrender.com/api/contact/all', {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
-      setMessages(response.data);
-    } catch (err) {
-      if (err.response && err.response.status === 401) {
-        localStorage.removeItem('adminToken');
-        setCurrentPage('admin-login');
-      }
-      console.error('Error fetching messages:', err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   const handleDelete = async (id) => {
-    if (window.confirm('Are you sure you want to delete this message?')) {
-      const token = localStorage.getItem('adminToken');
-      try {
-        await axios.delete(`https://hospital-management-system-t69x.onrender.com/api/contact/${id}`, {
+    const confirmDelete = window.confirm(
+      'Are you sure you want to delete this message?'
+    );
+    if (!confirmDelete) return;
+
+    const token = localStorage.getItem('adminToken');
+
+    try {
+      await axios.delete(
+        `https://hospital-management-system-t69x.onrender.com/api/contact/${id}`,
+        {
           headers: {
-            Authorization: `Bearer ${token}`
-          }
-        });
-        setMessages(messages.filter(msg => msg._id !== id));
-      } catch (err) {
-        console.error('Error deleting message:', err);
-        alert('Failed to delete message');
-      }
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      // Remove from UI instantly
+      setMessages((prev) => prev.filter((msg) => msg._id !== id));
+    } catch (err) {
+      console.error('Error deleting message:', err);
+      alert('Failed to delete message');
     }
   };
 
@@ -78,16 +94,24 @@ const AdminMessages = ({ setCurrentPage }) => {
                 <th>Actions</th>
               </tr>
             </thead>
+
             <tbody>
               {messages.map((msg) => (
                 <tr key={msg._id}>
-                  <td>{new Date(msg.submittedAt || msg.createdAt || Date.now()).toLocaleDateString()}</td>
+                  <td>
+                    {new Date(
+                      msg.submittedAt || msg.createdAt || Date.now()
+                    ).toLocaleDateString()}
+                  </td>
                   <td>{msg.name}</td>
                   <td>{msg.email}</td>
                   <td>{msg.subject}</td>
-                  <td>{msg.message}</td>
+                  <td className="message-cell">{msg.message}</td>
                   <td>
-                    <button className="delete-btn" onClick={() => handleDelete(msg._id)}>
+                    <button
+                      className="delete-btn"
+                      onClick={() => handleDelete(msg._id)}
+                    >
                       Delete
                     </button>
                   </td>
