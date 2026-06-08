@@ -39,6 +39,12 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
             LOGIN
           </button>
         </li>
+
+        <li>
+          <button onClick={() => setCurrentPage('admin-login')} className="login-btn admin-btn" style={{ marginLeft: '10px', backgroundColor: '#e94560' }}>
+            ADMIN
+          </button>
+        </li>
       </ul>
 
     </div>
