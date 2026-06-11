@@ -77,10 +77,11 @@ const Home = ({ setCurrentPage }) => {
         </div>
 
         <div className="hero-right">
-          <div className="card">1+ <span>Years of Trusted</span></div>
-          <div className="card">10+ <span>Appointments</span></div>
-          <div className="card">99.9% <span>Uptime</span></div>
-          <div className="card">10+ <span>Implementations</span></div>
+          <img
+            src="https://img.freepik.com/free-photo/medical-team-standing-together_23-2147845373.jpg"
+            alt="Healthcare Team"
+            className="hero-image"
+          />
         </div>
       </section>
 

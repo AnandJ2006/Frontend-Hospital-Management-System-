@@ -1,6 +1,11 @@
 import React from 'react';
 
 const Footer = ({ setCurrentPage }) => {
+  const navigate = (page) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className="footer">
       <div className="footer-content">
@@ -15,15 +20,14 @@ const Footer = ({ setCurrentPage }) => {
 
         <div className="footer-links">
           <h4>Quick Links</h4>
-
-          <button onClick={() => setCurrentPage('home')} className="link-btn">Home</button>
-          <button onClick={() => setCurrentPage('about')} className="link-btn">About Us</button>
-          <button onClick={() => setCurrentPage('services')} className="link-btn">Services</button>
-          <button onClick={() => setCurrentPage('contact')} className="link-btn">Contact</button>
-          <button onClick={() => setCurrentPage('privacy')} className="link-btn">Privacy Policy</button>
-          <button onClick={() => setCurrentPage('terms')} className="link-btn">Terms & Conditions</button>
-          <button onClick={() => setCurrentPage('admin-login')} className="link-btn" style={{ color: '#e94560' }}>Admin Portal</button>
-
+          <button onClick={() => navigate('home')} className="link-btn">Home</button>
+          <button onClick={() => navigate('about')} className="link-btn">About Us</button>
+          <button onClick={() => navigate('services')} className="link-btn">Services</button>
+          <button onClick={() => navigate('specialists')} className="link-btn">Specialists</button>
+          <button onClick={() => navigate('contact')} className="link-btn">Contact</button>
+          <button onClick={() => navigate('privacy')} className="link-btn">Privacy Policy</button>
+          <button onClick={() => navigate('terms')} className="link-btn">Terms & Conditions</button>
+          <button onClick={() => navigate('admin-login')} className="link-btn" style={{ color: '#e94560' }}>Admin Portal</button>
         </div>
       </div>
 

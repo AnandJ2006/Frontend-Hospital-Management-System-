@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
+import Specialists from './pages/Specialists';
 
 // Admin imports
 import AdminLogin from './pages/admin/AdminLogin';
@@ -21,6 +22,19 @@ import AdminSidebar from './components/AdminSidebar';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('isLoggedIn'));
+
+  useEffect(() => {
+    setIsLoggedIn(!!localStorage.getItem('isLoggedIn'));
+  }, [currentPage]);
+
+  const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('userEmail');
+    localStorage.removeItem('loginTime');
+    setIsLoggedIn(false);
+    setCurrentPage('home');
+  };
 
   const renderPage = () => {
     switch (currentPage) {
@@ -40,6 +54,8 @@ function App() {
         return <Privacy />;
       case 'terms':
         return <Terms />;
+      case 'specialists':
+        return <Specialists setCurrentPage={setCurrentPage} />;
       case 'admin-login':
         return <AdminLogin setCurrentPage={setCurrentPage} />;
       case 'admin-dashboard':
@@ -87,7 +103,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
       {renderPage()}
       <Footer setCurrentPage={setCurrentPage} />
     </div>
